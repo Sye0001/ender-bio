@@ -2,6 +2,7 @@
     const border = document.getElementById('border');
     const submitButton = document.getElementById('submit-button');
     const discordInput = document.getElementById('discord-input');
+    document.getElementById("notification").display = "none"
 
     discordInput.addEventListener('input', () => {
         if (discordInput.value.trim() !== '') {
@@ -21,6 +22,7 @@
             const requestdata = await servercheck.json()
 
             if (requestdata.success == false) {
+                document.getElementById("notification").display = "flex"
                 return console.log('non existant')
             }
             
