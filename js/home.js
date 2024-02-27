@@ -15,7 +15,7 @@ discordInput.addEventListener('input', () => {
 submitButton.addEventListener('click', () => {
     const discordId = discordInput.value.trim();
     if (discordId !== '') {
-        // Redirect to the URL with the Discord ID
-        window.location.href = `https://sye.lol/${discordId}`;
+        // Redirect to profile.html with Discord ID as a query parameter
+        window.location.href = `profile.html?id=${discordId}`;
     }
 });
