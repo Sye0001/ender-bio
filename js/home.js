@@ -13,20 +13,10 @@
         }
     });
 
-  submitButton.addEventListener('click', async function() {
-    const discordId = discordInput.value.trim();
-    
-    if (discordId !== '') {
-        const servercheck = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
-        const requestdata = await servercheck.json()
-
-        if (requestdata.success == false) {
-            document.getElementById("notification").style.display = "flex"
-            return
+    submitButton.addEventListener('click', () => {
+        const discordId = discordInput.value.trim();
+        if (discordId !== '') {
+            // Redirect to profile.html with Discord ID as a query parameter
+            window.location.href = `profile.html?id=${discordId}`;
         }
-        
-        const username = encodeURIComponent(requestdata.data.discord_user.username); // encode username
-        window.location.href = `profile.html?username=${username}`; // use username in URL
-    }
-});
-
+    });
