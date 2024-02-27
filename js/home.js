@@ -3,6 +3,7 @@
     const submitButton = document.getElementById('submit-button');
     const discordInput = document.getElementById('discord-input');
     document.getElementById("notification").display = "none"
+    console.log('loaded')
 
     discordInput.addEventListener('input', () => {
         if (discordInput.value.trim() !== '') {
