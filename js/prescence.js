@@ -7,6 +7,10 @@
         fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
             .then(response => response.json())
             .then(data => {
+                if (data.success == false) {
+                    window.location.href = "https://sye.lol/";
+                    return
+                }
                 // Extract Discord username, tag, and status
                 const username = data.data.discord_user.display_name;
                 const tag = data.data.discord_user.username;
