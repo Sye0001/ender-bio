@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
+    <link href="./output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950">
+    <main>
+        <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
+        <div class="flex justify-center items-center h-screen">
+            <div class="profile w-[25rem] mx-4">
+                <div class="top flex items-center">
+                    <div class="img" id="profilePic">
+                        <img class="w-[64px] h-[64px] object-cover rounded-full" src="">
+                    </div>
+                    <div class="user ml-3">
+                        <div class="username text-white text-xl font-semibold leading-tight">
+                            <a id="usernameLink" href="#">Loading...</a>
+                        </div>
+                        <div class="tag text-white text-opacity-25">
+                            <a id="tagLink" href="#">Loading...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Activity-->
+                <div class="spotify status bg-neutral-900 bg-opacity-35 rounded-xl p-3 mt-5 w-full">
+                    <div class="info flex items-center">
+                        <div class="cover order-1">
+                            <img id="imgActivity" src="https://i.imgur.com/j1HAfFJ.png" width="128" height="128" draggable="false" alt="Activity Image" class="rounded-xl">
+                        </div>                        
+                        <div class="title text-white ml-4 overflow-x-hidden order-2 truncate" style="width: calc(100% - 64px);">
+                            <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
+                                Loading...
+                            </a>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state">Loading...</h2>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text">Loading...</h2>
+                        </div>
+                    </div>
+                    <div id="timestamp" style="display:none;">
+                        <div class="rounded-lg bg-gray-200/20 h-2 mt-4">
+                            <div id="trackbar" class="rounded-lg bg-white/75 h-2 transition-all" style="width: 0%;"></div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span id="currentTime">-</span>
+                            <span id="totalTime">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    
+    <script src="./js/prescence.js"></script>
+    
+</body>
+</html>
