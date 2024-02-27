@@ -2,8 +2,6 @@
     const border = document.getElementById('border');
     const submitButton = document.getElementById('submit-button');
     const discordInput = document.getElementById('discord-input');
-    document.getElementById("notification").display = "none"
-    console.log('loaded')
 
     discordInput.addEventListener('input', () => {
         if (discordInput.value.trim() !== '') {
@@ -23,8 +21,8 @@
             const requestdata = await servercheck.json()
 
             if (requestdata.success == false) {
-                document.getElementById("notification").display = "flex"
-                return console.log('non existant')
+                document.getElementById("notification").style.display = "flex"
+                return
             }
             
             window.location.href = `profile.html?id=${discordId}`;
