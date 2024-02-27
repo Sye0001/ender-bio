@@ -12,6 +12,21 @@
             font-family: 'Inter', sans-serif;
             color: #fff;
         }
+
+        body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
     </style>
 </head>
 <body class="bg-neutral-950">
@@ -40,11 +55,13 @@
                             <img id="imgActivity" src="https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png" width="128" height="128" draggable="false" alt="Activity Image" class="rounded-xl">
                         </div>                        
                         <div class="title text-white ml-4 overflow-x-hidden order-2 truncate" style="width: calc(100% - 64px);">
-                            <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
+                            <a id="name" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
                                 Loading...
                             </a>
-                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state">Loading...</h2>
-                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text">Loading...</h2>
+                            <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
+                            </a>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state"></h2>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text"></h2>
                         </div>
                     </div>
                     <div id="timestamp" style="display:none;">
