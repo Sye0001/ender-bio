@@ -13,10 +13,17 @@
         }
     });
 
-    submitButton.addEventListener('click', () => {
+    submitButton.addEventListener('click', async function() {
         const discordId = discordInput.value.trim();
+        
         if (discordId !== '') {
-            // Redirect to profile.html with Discord ID as a query parameter
+            const servercheck = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+            const requestdata = await servercheck.json()
+
+            if (requestdata.success == false) {
+                return console.log('non existant')
+            }
+            
             window.location.href = `profile.html?id=${discordId}`;
         }
     });
