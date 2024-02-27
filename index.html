@@ -1,75 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ender | Bio Link</title>
-  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
-  <link href="./output.css" rel="stylesheet">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    
-    body {
-        font-family: 'Inter',sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ender | Bio Link</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
+    <link href="./output.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-    .w {
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .w {
         background-image: linear-gradient(to right, #e9e9fe, #1d1164);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-    }
+      }
 
-    .placeholder-slate-50::placeholder {
-      color: rgba(209, 213, 219, 0.3);
-    }
+      .placeholder-slate-50::placeholder {
+        color: rgba(209, 213, 219, 0.3);
+      }
 
-    .initial-opacity {
-    opacity: 0.6; /* Initial opacity */
-}
+      .initial-opacity {
+        opacity: 0.6;
+        /* Initial opacity */
+      }
 
-.notify {
-    position: fixed;
-    bottom: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-  </style>    
-</head>
-<body class="bg-neutral-950">
+      .notify {
+        position: fixed;
+        bottom: 20px;
+        /* Adjust as needed */
+        right: 20px;
+        /* Adjust as needed */
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body class="bg-neutral-950">
     <main class="flex justify-center items-center h-screen">
-        <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
-        <div class="hero">
-            <div class="notify" id="notify" style="display: none;">
-                <p class="text-jacksons-purple-500">Looks like user isn't in <a href="https://discord.gg/lanyard" target="_blank">Lanyard</a></p>
-              </div>
-            <div class="img mb-5">
-                <img class="w-[158px] h-[158px] mx-auto" src="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
-            </div>
-            <div class="title items-center text-center font-semibold text-[94px] text-jacksons-purple-100">
-                <h1 class="leading-9">Ender</h1>
-                <h1 class="w">Bio Link</h1>
-            </div>
-            <div class="bottom w-full md:w-[65%] mx-auto ">
-                <div class="text text-jacksons-purple-50 text-opacity-60 text-center">
-                    <p>Easily share your Discord profile utilizing Lanyard API, very simple & easy experience!</p>
-                </div>
-                <div class="buttons justify-center flex items-center mx-5">
-                    <div id="border" class="border-2 border-jacksons-purple-50 border-opacity-10 bg-transparent h-11 w-full mx-6 mt-4 rounded-lg flex items-center">
-                      <div class="flex justify-center w-full ">
-                        <input id="discord-input" class="bg-transparent text-white outline-none  w-60 placeholder-slate-50 placeholder-opacity-30" placeholder="Enter your Discord user ID">
-                        <button id="submit-button" class="ml-2 text-white uppercase text-[13px] initial-opacity">Submit</button>
-
-                      </div>
+      <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
+      <div class="hero">
+        <div class="notify bg-neutral-900 bg-opacity-45 border-2 border-l-jacksons-purple-600 border-y-transparent border-r-transparent">
+          <p class="text-jacksons-purple-500">Looks like user isn't in <a class="font-bold" href="https://discord.gg/lanyard" target="_blank">
+              <button class="group relative inline-flex items-center justify-center  mb-2 mr-2 text-sm font-bold  ">
+                <span class="relative transition-all ease-in duration-200 rounded-md text-[16px] group-hover:bg-opacity-0"> Lanyard </span>
+                <div class="ease-in duration-300 opacity-0 group-hover:block group-hover:opacity-100 transition-all">
+                  <div class="ease-in-out duration-500 -translate-y-4 pointer-events-none transition-all group-hover:-translate-y-12 absolute left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-slate-300 before:-top-2">
+                    <div class="rounded-sm bg-jacksons-purple-500 py-1 px-2">
+                      <p class="whitespace-nowrap">Join Server</p>
                     </div>
+                    <div class="h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-black"></div>
+                  </div>
                 </div>
-            </div>
+              </button>
+            </a>
+          </p>
         </div>
-</main>
-<script src="./js/home.js"></script>
-</body>
+        <div class="img mb-5">
+          <img class="w-[158px] h-[158px] mx-auto" src="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
+        </div>
+        <div class="title items-center text-center font-semibold text-[94px] text-jacksons-purple-100">
+          <h1 class="leading-9">Ender</h1>
+          <h1 class="w">Bio Link</h1>
+        </div>
+        <div class="bottom w-full md:w-[65%] mx-auto ">
+          <div class="text text-jacksons-purple-50 text-opacity-60 text-center">
+            <p>Easily share your Discord profile utilizing Lanyard API, very simple & easy experience!</p>
+          </div>
+          <div class="buttons justify-center flex items-center mx-5">
+            <div id="border" class="border-2 border-jacksons-purple-50 border-opacity-10 bg-transparent h-11 w-full mx-6 mt-4 rounded-lg flex items-center">
+              <div class="flex justify-center w-full ">
+                <input id="discord-input" class="bg-transparent text-white outline-none  w-60 placeholder-slate-50 placeholder-opacity-30" placeholder="Enter your Discord user ID">
+                <button id="submit-button" class="ml-2 text-white uppercase text-[13px] initial-opacity">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/home.js"></script>
+  </body>
 </html>
