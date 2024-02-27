@@ -13,11 +13,9 @@ discordInput.addEventListener('input', () => {
 });
 
 submitButton.addEventListener('click', () => {
-    const discordUsername = discordInput.value.trim();
-    if (discordUsername !== '') {
-        // Construct the URL with the username
-        const url = `https://sye.lol/${encodeURIComponent(discordUsername)}`;
-        // Redirect to the constructed URL
-        window.location.href = url;
+    const discordId = discordInput.value.trim();
+    if (discordId !== '') {
+        // Redirect to the URL with the Discord ID
+        window.location.href = `https://sye.lol/${discordId}`;
     }
 });
