@@ -59,12 +59,17 @@ function fetchDataAndUpdateUI(discordId) {
                     // Hide the timestamp
                     document.getElementById("timestamp").style.display = "none";
                     
-                    document.getElementById("state").innerText = otherActivity.state;
-                    document.getElementById("details").innerText = otherActivity.details;
-                    document.getElementById("large_text").innerText = otherActivity.assets.large_text;
-    
+                    document.getElementById("state").innerText = otherActivity.details;
+                    document.getElementById("name").innerText = otherActivity.name;
+                    
+                    // Check if 'large_text' exists and is not undefined before setting its value
+                    if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
+                        document.getElementById("large_text").innerText = otherActivity.assets.large_text;
+                    }
+                    
                     // Display the default image
                     document.getElementById("imgActivity").src = defaultImageUrl;
+                
                 } else {
                     // If no activity is found, display "User is not doing anything"
                     document.getElementById("state").innerText = "User is not doing anything";
