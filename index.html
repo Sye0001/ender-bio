@@ -41,13 +41,27 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
       }
+      body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
     </style>
   </head>
   <body class="bg-neutral-950">
     <main class="flex justify-center items-center h-screen">
       <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
       <div class="hero">
-        <div id="notification" class="notify bg-neutral-900 bg-opacity-45 border-2 border-l-jacksons-purple-600 border-y-transparent border-r-transparent">
+        <div class="notify bg-neutral-900 bg-opacity-45 border-2 border-l-jacksons-purple-600 border-y-transparent border-r-transparent">
           <p class="text-jacksons-purple-500">Looks like user isn't in <a class="font-bold" href="https://discord.gg/lanyard" target="_blank">
               <button class="group relative inline-flex items-center justify-center  mb-2 mr-2 text-sm font-bold  ">
                 <span class="relative transition-all ease-in duration-200 rounded-md text-[16px] group-hover:bg-opacity-0"> Lanyard </span>
