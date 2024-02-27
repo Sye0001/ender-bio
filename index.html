@@ -28,12 +28,25 @@
     opacity: 0.6; /* Initial opacity */
 }
 
+.notify {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
   </style>    
 </head>
 <body class="bg-neutral-950">
     <main class="flex justify-center items-center h-screen">
         <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
         <div class="hero">
+            <div class="notify" id="notify" style="display: none;">
+                <p class="text-jacksons-purple-500">Looks like user isn't in <a href="https://discord.gg/lanyard" target="_blank">Lanyard</a></p>
+              </div>
             <div class="img mb-5">
                 <img class="w-[158px] h-[158px] mx-auto" src="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
             </div>
@@ -51,7 +64,6 @@
                         <input id="discord-input" class="bg-transparent text-white outline-none  w-60 placeholder-slate-50 placeholder-opacity-30" placeholder="Enter your Discord user ID">
                         <button id="submit-button" class="ml-2 text-white uppercase text-[13px] initial-opacity">Submit</button>
 
-
                       </div>
                     </div>
                 </div>
@@ -59,7 +71,5 @@
         </div>
 </main>
 <script src="./js/home.js"></script>
-
-    
 </body>
 </html>
