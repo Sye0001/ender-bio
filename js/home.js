@@ -1,15 +1,15 @@
- const border = document.getElementById('border');
-    const submitButton = document.getElementById('submit-button');
-    const discordInput = document.getElementById('discord-input');
+const border = document.getElementById('border');
+const submitButton = document.getElementById('submit-button');
+const discordInput = document.getElementById('discord-input');
 
-    discordInput.addEventListener('input', () => {
-        if (discordInput.value.trim() !== '') {
+discordInput.addEventListener('input', () => {
+    if (discordInput.value.trim() !== '') {
 
-            const requestdata = await servercheck.json()
+        const requestdata = await servercheck.json()
 
-            if (requestdata.success == false) {
-                document.getElementById("notification").style.display = "flex"
-                return
-            }
+        if (requestdata.success == false) {
+            document.getElementById("notification").style.display = "flex"
+            return
+        }
 
-            window.location.href = `profile.html?id=${discordId}`;
+        window.location.href = `profile.html?id=${discordId}`;
