@@ -23,8 +23,7 @@ submitButton.addEventListener('click', async function() {
         if (requestdata.success === false) {
             // Add the animation class to the body
             body.classList.add('animate-fade-out');
-
-            // Delay the redirect to allow time for the animation
+            // Redirect to error page after animation
             setTimeout(() => {
                 window.location.href = 'error.html'; // Redirect to error page
             }, 1000); // Adjust the delay time to match the animation duration
@@ -38,8 +37,7 @@ submitButton.addEventListener('click', async function() {
 
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
-
-        // Delay the redirect to allow time for the animation
+        // Redirect to profile page after animation
         setTimeout(() => {
             window.location.href = profileUrl; // Redirect to the profile page using the constructed URL
         }, 1000); // Adjust the delay time to match the animation duration
