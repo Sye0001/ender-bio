@@ -32,13 +32,11 @@ function fetchDataAndUpdateUI(discordId) {
 				document.getElementById("timestamp").style.display = "block";
 
 				// Display Spotify data
-				document.getElementById("artist").innerText = spotifyData.artist;
+				document.getElementById("state").innerText = spotifyData.artist;
 				document.getElementById("details").innerText = spotifyData.song;
 				document.getElementById("details").style.display = "flex";
 				document.getElementById("album").style.display = "flex";
 				document.getElementById("large_text").style.display = "none";
-                document.getElementById("state").style.display = "none";
-                document.getElementById("artist").style.display = "flex";
 				document.getElementById("album").innerText = spotifyData.album;
 				document.getElementById("name").innerText = ""; // Clear the name element
 
@@ -72,9 +70,6 @@ function fetchDataAndUpdateUI(discordId) {
 						document.getElementById("large_text").style.display = "none";
 					}
 					document.getElementById("album").style.display = "none";
-                    document.getElementById("state").style.display = "flex";
-                    document.getElementById("artist").style.display = "none";
-
 
 					// Display state only if it's defined
 					if (otherActivity.state !== undefined) {
