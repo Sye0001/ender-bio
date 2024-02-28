@@ -13,36 +13,30 @@ discordInput.addEventListener('input', () => {
     }
 });
 
-  // Function to handle submission of Discord ID
-        async function handleSubmission() {
-            // Get the Discord ID from the input field
-            const discordId = document.getElementById("discord-input").value.trim();
+submitButton.addEventListener('click', async function() {
+    const discordId = discordInput.value.trim();
+    
+    if (discordId !== '') {
+        const servercheck = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+        const requestdata = await servercheck.json()
 
-            // Check if the Discord ID is not empty
-            if (discordId) {
-                try {
-                    // Fetch the content of profile.html
-                    const response = await fetch('profile.html');
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch profile.html');
-                    }
-                    const htmlContent = await response.text();
+        if (requestdata.success === false) {
+            // Add the animation class to the body
+            body.classList.add('animate-fade-out');
 
-                    // Replace the current HTML content with the fetched content
-                    document.open();
-                    document.write(htmlContent);
-                    document.close();
-
-                    // Load the presence.js script and pass the discordId as a query parameter
-                    const script = document.createElement('script');
-                    script.src = `precesne.js?id=${discordId}`;
-                    document.body.appendChild(script);
-                } catch (error) {
-                    console.error('Error fetching profile.html:', error);
-                    // Handle error appropriately, e.g., display a message to the user
-                }
-            }
+            // Delay the redirect to allow time for the animation
+            setTimeout(() => {
+                window.location.href = 'error.html'; // Redirect to error page
+            }, 1000); // Adjust the delay time to match the animation duration
+            return;
         }
 
-        // Add event listener to the submit button
-        document.getElementById("submit-button").addEventListener("click", handleSubmission);
+        // Add the animation class to the body
+        body.classList.add('animate-fade-out');
+
+        // Delay the redirect to allow time for the animation
+        setTimeout(() => {
+            window.location.href = `profile.html?id=${discordId}`;
+        }, 1000); // Adjust the delay time to match the animation duration
+    }
+});
