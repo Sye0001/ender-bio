@@ -1,12 +1,18 @@
-// Get DOM elements
-submitButton.addEventListener('click', function() {
-    console.log("Submit button clicked"); // Add this line to check if the event listener is triggered
+const border = document.getElementById('border');
+const submitButton = document.getElementById('submit-button');
+const discordInput = document.getElementById('discord-input');
+const body = document.querySelector('body');
 
-    const discordId = discordInput.value.trim();
-const discordInput = document.getElementById('discordInput');
-const body = document.body;
+discordInput.addEventListener('input', () => {
+    if (discordInput.value.trim() !== '') {
+        border.style.borderColor = 'rgba(209, 213, 219, 0.4)';
+        submitButton.style.opacity = '1'; // Set opacity to 1 when text is input
+    } else {
+        border.style.borderColor = 'rgba(209, 213, 219, 0.1)';
+        submitButton.style.opacity = '0.6'; // Set opacity back to 0.6 when text is empty
+    }
+});
 
-// Add event listener to submit button
 submitButton.addEventListener('click', async function() {
     const discordId = discordInput.value.trim();
     
@@ -25,20 +31,12 @@ submitButton.addEventListener('click', async function() {
             return;
         }
 
-        // Extract Discord username from API response
-        const username = requestdata.data.discord_user.display_name;
-        console.log("Username:", username); // Log extracted username
-        const usernameForLink = encodeURIComponent(username.replace(/\s+/g, '')); // Encode username for URL
-
-        // Construct redirection link with username
-        const redirectionLink = `profile.html?username=${usernameForLink}`;
-
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = redirectionLink; // Redirect to profile page with username
+            window.location.href = `profile.html?id=${discordId}`;
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
