@@ -13,30 +13,17 @@ discordInput.addEventListener('input', () => {
     }
 });
 
-submitButton.addEventListener('click', async function() {
-    const discordId = discordInput.value.trim();
+// Function to handle submission of Discord ID
+function handleSubmission() {
+    // Get the Discord ID from the input field
+    const discordId = document.getElementById("discord-input").value.trim();
     
-    if (discordId !== '') {
-        const servercheck = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
-        const requestdata = await servercheck.json()
-
-        if (requestdata.success === false) {
-            // Add the animation class to the body
-            body.classList.add('animate-fade-out');
-
-            // Delay the redirect to allow time for the animation
-            setTimeout(() => {
-                window.location.href = 'error.html'; // Redirect to error page
-            }, 1000); // Adjust the delay time to match the animation duration
-            return;
-        }
-
-        // Add the animation class to the body
-        body.classList.add('animate-fade-out');
-
-        // Delay the redirect to allow time for the animation
-        setTimeout(() => {
-            window.location.href = `profile.html?id=${discordId}`;
-        }, 1000); // Adjust the delay time to match the animation duration
+    // Check if the Discord ID is not empty
+    if (discordId) {
+        // Redirect to the specified URL with the Discord ID
+        window.location.href = `https://sye.lol/${discordId}`;
     }
-});
+}
+
+// Add event listener to the submit button
+document.getElementById("submit-button").addEventListener("click", handleSubmission);
