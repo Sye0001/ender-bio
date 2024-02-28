@@ -11,8 +11,6 @@
         body {
             font-family: 'Inter',sans-serif;
         }
-
-
         body {
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
@@ -27,22 +25,51 @@
         opacity: 1;
     }
 }
+
+        .animate-fade-out {
+            animation: fadeOutAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOutAnimation {
+            100% {
+                opacity: 0;
+            }
+            0% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body class="bg-neutral-950">
     <div class="flex justify-center items-center h-screen">
         <div class="content text-center mx-4 md:mx-0 ">
-        <h1 class="text-white font-bold text-[38px] ">Looks like we've ran into an error!</h1>
-        <p class="text-white mt-2 text-[15px] text-opacity-55 md:w-[60%] mx-auto">Make sure you have enter a valid Discord ID and that the user is in <a href="https://discord.gg/lanyard" target="_blank" class="border-b border-dotted border-white border-opacity-20 text-white text-opacity-55 duration-200 ease-in-out hover:text-opacity-70">Lanyard Discord server </a> so we can fetch users Discord status.</p>
-        <div class="btn flex justify-center items-center">
-            <a href="./index.html" class="text-white text-opacity-30 mt-5 items-center flex gap-3 bg-neutral-900 px-4 py-2 rounded-lg hover:text-opacity-45 duration-300 ease-in-out">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                  </svg>
-                <span>Go back home</span>
-            </a>
-           </div>
+            <h1 class="text-white font-bold text-[38px] ">Looks like we've run into an error!</h1>
+            <p class="text-white mt-2 text-[15px] text-opacity-55 md:w-[60%] mx-auto">Make sure you have entered a valid Discord ID and that the user is in <a href="https://discord.gg/lanyard" target="_blank" class="border-b border-dotted border-white border-opacity-20 text-white text-opacity-55 duration-200 ease-in-out hover:text-opacity-70">Lanyard Discord server </a> so we can fetch the user's Discord status.</p>
+            <div class="btn flex justify-center items-center">
+                <a href="./index.html" id="go-back-home" class="text-white text-opacity-30 mt-5 items-center flex gap-3 bg-neutral-900 px-4 py-2 rounded-lg hover:text-opacity-45 duration-300 ease-in-out">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                    </svg>
+                    <span>Go back home</span>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script>
+        document.getElementById('go-back-home').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Add class to body to trigger animation
+            document.body.classList.add('animate-fade-out');
+
+            // Redirect after animation completes
+            setTimeout(function() {
+                window.location.href = './index.html';
+            }, 1000); // Duration of animation
+        });
+    </script>
 </body>
 </html>
