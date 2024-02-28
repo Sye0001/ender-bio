@@ -13,14 +13,30 @@
             color: #fff;
         }
 
-
+        .header-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .header-bg img {
+            opacity: 0.1;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="bg-neutral-950">
     <main>
-        <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
         <div class="flex justify-center items-center h-screen">
-            <div class="profile w-[25rem] mx-4">
+            <div class="header-bg">
+                <img src="https://i.ibb.co/S7r4ZK8/header-bacwkground.png" alt="BG GLOW">
+            </div>          
+                <div class="profile w-[25rem] mx-4">
                 <div class="top flex items-center">
                     <div class="img" id="profilePic">
                         <img class="w-[64px] h-[64px] object-cover rounded-full" src="">
