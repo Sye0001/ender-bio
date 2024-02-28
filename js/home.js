@@ -31,12 +31,19 @@ submitButton.addEventListener('click', async function() {
             return;
         }
 
+        // Extract Discord username from API response
+        const username = requestdata.data.discord_user.display_name;
+        const usernameForLink = encodeURIComponent(username.replace(/\s+/g, '')); // Encode username for URL
+
+        // Construct redirection link with username
+        const redirectionLink = `profile.html?username=${usernameForLink}`;
+
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = `profile.html?id=${discordId}`;
+            window.location.href = redirectionLink; // Redirect to profile page with username
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
