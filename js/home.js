@@ -13,7 +13,9 @@ discordInput.addEventListener('input', () => {
     }
 });
 
-submitButton.addEventListener('click', async function() {
+submitButton.addEventListener('click', async function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
     const discordId = discordInput.value.trim();
     
     if (discordId !== '') {
@@ -31,15 +33,12 @@ submitButton.addEventListener('click', async function() {
             return;
         }
 
-        // Fetch profile content based on Discord ID and inject it into the current page
-        fetch(`profile.html?id=${discordId}`)
-            .then(response => response.text())
-            .then(html => {
-                // Replace the current page content with the fetched profile content
-                document.documentElement.innerHTML = html;
-            })
-            .catch(error => {
-                console.error(`Error fetching profile.html:`, error);
-            });
+        // Add the animation class to the body
+        body.classList.add('animate-fade-out');
+
+        // Delay the redirect to allow time for the animation
+        setTimeout(() => {
+            window.location.href = `profile.html?id=${discordId}`;
+        }, 1000); // Adjust the delay time to match the animation duration
     }
 });
