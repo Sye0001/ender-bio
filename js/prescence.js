@@ -3,12 +3,12 @@ const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-rem
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(discordId) {
-    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+    fetch(`https://api.lanyard.rest/v1/users/208168562286788610`)
         .then(response => response.json())
         .then(data => {
-            if (data.success == false) {
+            if (!data.success) {
                 window.location.href = "https://sye.lol/";
-                return
+                return;
             }
             // Extract Discord username, tag, and status
             const username = data.data.discord_user.display_name;
@@ -25,37 +25,33 @@ function fetchDataAndUpdateUI(discordId) {
             const avatarUrl = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${avatarHash}.png`;
             document.getElementById("profilePic").innerHTML = `<img class="w-[64px] h-[64px] object-cover rounded-full" src="${avatarUrl}" alt="Profile Picture">`;
 
-            // Extract and display Spotify activity if available
-            const spotifyActivity = data.data.activities.find(activity => activity.type === 2); // Find Spotify activity
-            if (spotifyActivity) {
+            // Extract Spotify data if available
+            const spotifyData = data.data.spotify;
+            if (spotifyData) {
                 // Show the timestamp
                 document.getElementById("timestamp").style.display = "block";
                 
-                document.getElementById("state").innerText = spotifyActivity.state;
-                document.getElementById("details").innerText = spotifyActivity.details;
-                document.getElementById("large_text").innerText = spotifyActivity.assets.large_text;
-
-                 // Check if the song has a URL
-                 const songUrl = spotifyActivity.assets.large_image.startsWith('spotify:') ? `https://open.spotify.com/track/${spotifyActivity.sync_id}` : null;
-                 if (songUrl) {
-                     // Make the song name a clickable link
-                     document.getElementById("details").innerHTML = `<a href="${songUrl}" target="_blank" rel="noopener noreferrer">${spotifyActivity.details}</a>`;
-                 }
-
+                // Display Spotify data
+                document.getElementById("state").innerText = spotifyData.artist;
+                document.getElementById("details").innerText = spotifyData.song;
+                document.getElementById("details").style.display = "flex";
+                document.getElementById("album").style.display = "flex";
+                document.getElementById("album").innerText = spotifyData.album;
+                document.getElementById("name").innerText = ""; // Clear the name element
+            
                 // Display album cover image
-                const albumArtUrl = data.data.spotify ? data.data.spotify.album_art_url : "https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png";
-                document.getElementById("imgActivity").src = albumArtUrl;
-
+                document.getElementById("imgActivity").src = spotifyData.album_art_url;
+            
                 // Calculate and display timestamps
                 const currentTime = new Date().getTime();
-                const startTime = spotifyActivity.timestamps.start;
-                const endTime = spotifyActivity.timestamps.end;
+                const startTime = spotifyData.timestamps.start;
+                const endTime = spotifyData.timestamps.end;
                 const totalTime = endTime - startTime;
                 const elapsedTime = currentTime - startTime;
-
+            
                 document.getElementById("currentTime").innerText = formatTime(elapsedTime);
                 document.getElementById("totalTime").innerText = formatTime(totalTime);
-
+            
                 // Update trackbar width
                 const trackbarWidth = (elapsedTime / totalTime) * 100;
                 document.getElementById("trackbar").style.width = `${trackbarWidth}%`;
@@ -65,7 +61,8 @@ function fetchDataAndUpdateUI(discordId) {
                 if (otherActivity) {
                     // Hide the timestamp
                     document.getElementById("timestamp").style.display = "none";
-                    
+                    document.getElementById("details").style.display = "none";
+                    document.getElementById("album").style.display = "none";
                     document.getElementById("state").innerText = otherActivity.details;
                     document.getElementById("name").innerText = otherActivity.name;
                     
@@ -76,18 +73,19 @@ function fetchDataAndUpdateUI(discordId) {
                     
                     // Display the default image
                     document.getElementById("imgActivity").src = defaultImageUrl;
-                
                 } else {
                     // If no activity is found, display "User is not doing anything"
                     document.getElementById("state").innerText = "User is not doing anything";
-                    document.getElementById("details").innerText = "";
+                    document.getElementById("details").style.display = ""; // Clear the details element
                     document.getElementById("large_text").innerText = "";
+                    document.getElementById("name").innerText = ""; // Clear the name element
                     document.getElementById("imgActivity").src = defaultImageUrl;
-
+            
                     // Hide the timestamp
                     document.getElementById("timestamp").style.display = "none";
                 }
             }
+                                
         })
         .catch(error => console.error("Error fetching data:", error));
 }
