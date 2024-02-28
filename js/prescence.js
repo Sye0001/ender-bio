@@ -108,4 +108,4 @@ const discordId = urlParams.get('id');
 fetchDataAndUpdateUI(discordId);
 
 // Set interval to fetch data and update UI every 2 seconds
-let intervalId = setInterval(() => fetchDataAndUpdateUI(discordId), 2000);
+let intervalId = setInterval(() => fetchDataAndUpdateUI(discordId), 1000);
