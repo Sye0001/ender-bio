@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "^(.*)$"
-  to = "/index.html?id=:1"
-  status = 200
-  force = false
-  query = {path = ":1"}
