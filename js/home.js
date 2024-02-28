@@ -1,5 +1,8 @@
 // Get DOM elements
-const submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', function() {
+    console.log("Submit button clicked"); // Add this line to check if the event listener is triggered
+
+    const discordId = discordInput.value.trim();
 const discordInput = document.getElementById('discordInput');
 const body = document.body;
 
