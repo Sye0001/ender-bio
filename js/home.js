@@ -36,7 +36,7 @@ submitButton.addEventListener('click', async function() {
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = `profile.html/${discordId}`;
+            window.location.href = `profile/${discordId}`;
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
