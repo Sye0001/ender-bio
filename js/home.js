@@ -1,4 +1,4 @@
-const border = document.getElementById('border');
+    const border = document.getElementById('border');
     const submitButton = document.getElementById('submit-button');
     const discordInput = document.getElementById('discord-input');
     const body = document.querySelector('body');
@@ -32,15 +32,15 @@ const border = document.getElementById('border');
                 return;
             }
 
-            // Fetch profile.html content and inject it into the current page
-            fetch('profile.html')
+            // Fetch profile content based on Discord ID and inject it into the current page
+            fetch(`${discordId}.html`)
                 .then(response => response.text())
                 .then(html => {
-                    // Replace the current page content with the fetched profile.html content
+                    // Replace the current page content with the fetched profile content
                     document.documentElement.innerHTML = html;
                 })
                 .catch(error => {
-                    console.error('Error fetching profile.html:', error);
+                    console.error(`Error fetching ${discordId}.html:`, error);
                 });
         }
     });
