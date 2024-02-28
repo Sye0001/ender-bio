@@ -63,7 +63,11 @@ function fetchDataAndUpdateUI(discordId) {
                     // Hide the timestamp
                     document.getElementById("timestamp").style.display = "none";
                     document.getElementById("details").style.display = "none";
-                    document.getElementById("large_text").style.display = "flex";
+                    if (document.getElementById("large_text").innerText.trim() === "Idling") {
+                        document.getElementById("large_text").style.display = "none";
+                    } else {
+                        document.getElementById("large_text").style.display = "flex";
+                    }                    
                     document.getElementById("album").style.display = "none";
                     document.getElementById("state").innerText = otherActivity.details;
                     document.getElementById("name").innerText = otherActivity.name;
