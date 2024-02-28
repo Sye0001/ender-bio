@@ -35,6 +35,13 @@ function fetchDataAndUpdateUI(discordId) {
                 document.getElementById("details").innerText = spotifyActivity.details;
                 document.getElementById("large_text").innerText = spotifyActivity.assets.large_text;
 
+                 // Check if the song has a URL
+                 const songUrl = spotifyActivity.assets.large_image.startsWith('spotify:') ? `https://open.spotify.com/track/${spotifyActivity.sync_id}` : null;
+                 if (songUrl) {
+                     // Make the song name a clickable link
+                     document.getElementById("details").innerHTML = `<a href="${songUrl}" target="_blank" rel="noopener noreferrer">${spotifyActivity.details}</a>`;
+                 }
+
                 // Display album cover image
                 const albumArtUrl = data.data.spotify ? data.data.spotify.album_art_url : "https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png";
                 document.getElementById("imgActivity").src = albumArtUrl;
