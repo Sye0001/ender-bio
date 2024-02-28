@@ -47,3 +47,9 @@ submitButton.addEventListener('click', async function() {
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
+
+// Extract Discord username from API response
+const username = requestdata.data.discord_user.display_name;
+console.log("Username:", username); // Add this line to check the extracted username
+const usernameForLink = encodeURIComponent(username.replace(/\s+/g, '')); // Encode username for URL
+
