@@ -70,14 +70,17 @@ function fetchDataAndUpdateUI(discordId) {
                     // Display the default image
                     document.getElementById("imgActivity").src = defaultImageUrl;
                 
-                    // Check if 'name' is "Custom Status" and skip displaying if true
-                    if (otherActivity.name === "Custom Status") {
-                        // Hide or clear the element associated with the name "Custom Status"
-                        // For example:
-                        document.getElementById("name").innerText = ""; // Or set it to an empty string
-                    }
+                } else {
+                    // If no activity is found, display "User is not doing anything"
+                    document.getElementById("state").innerText = "User is not doing anything";
+                    document.getElementById("details").innerText = "";
+                    document.getElementById("large_text").innerText = "";
+                    document.getElementById("imgActivity").src = defaultImageUrl;
+
+                    // Hide the timestamp
+                    document.getElementById("timestamp").style.display = "none";
                 }
-                
+            }
         })
         .catch(error => console.error("Error fetching data:", error));
 }
