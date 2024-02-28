@@ -32,12 +32,17 @@ submitButton.addEventListener('click', async function() {
         }
 
         const username = requestdata.data.discord_user.username; // Extract the username
+        console.log("Extracted username:", username); // Log the extracted username
+        const profileUrl = `profile.html?username=${username}`; // Construct the URL
+        console.log("Constructed URL:", profileUrl); // Log the constructed URL
+
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = `profile.html?username=${username}`; // Use the username in the URL
+            window.location.href = profileUrl; // Redirect to the profile page using the constructed URL
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
+
