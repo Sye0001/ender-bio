@@ -3,7 +3,7 @@ const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-rem
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(discordId) {
-    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+    fetch(`https://api.lanyard.rest/v1/users/208168562286788610`)
         .then(response => response.json())
         .then(data => {
             if (!data.success) {
@@ -78,6 +78,8 @@ function fetchDataAndUpdateUI(discordId) {
                     document.getElementById("state").innerText = "User is not doing anything";
                     document.getElementById("details").style.display = ""; // Clear the details element
                     document.getElementById("large_text").innerText = "";
+                    document.getElementById("details").style.display = "none";
+                    document.getElementById("album").style.display = "none";
                     document.getElementById("name").innerText = ""; // Clear the name element
                     document.getElementById("imgActivity").src = defaultImageUrl;
             
