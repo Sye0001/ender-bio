@@ -29,18 +29,7 @@
         /* Initial opacity */
       }
 
-      .notify {
-        position: fixed;
-        bottom: 20px;
-        /* Adjust as needed */
-        display: none;
-        right: 20px;
-        /* Adjust as needed */
-        padding: 10px 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-      }
+
       body {
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
@@ -61,22 +50,6 @@
     <main class="flex justify-center items-center h-screen">
       <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
       <div class="hero">
-        <div id="notification" class="notify bg-neutral-900 bg-opacity-45 border-2 border-l-jacksons-purple-600 border-y-transparent border-r-transparent">
-          <p class="text-jacksons-purple-500">Looks like user isn't in <a class="font-bold" href="https://discord.gg/lanyard" target="_blank">
-              <button class="group relative inline-flex items-center justify-center  mb-2 mr-2 text-sm font-bold  ">
-                <span class="relative transition-all ease-in duration-200 rounded-md text-[16px] group-hover:bg-opacity-0"> Lanyard </span>
-                <div class="ease-in duration-300 opacity-0 group-hover:block group-hover:opacity-100 transition-all">
-                  <div class="ease-in-out duration-500 -translate-y-4 pointer-events-none transition-all group-hover:-translate-y-12 absolute left-1/2 z-50 flex -translate-x-1/2 flex-col items-center rounded-sm text-center text-sm text-slate-300 before:-top-2">
-                    <div class="rounded-sm bg-jacksons-purple-500 py-1 px-2">
-                      <p class="whitespace-nowrap">Join Server</p>
-                    </div>
-                    <div class="h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-black"></div>
-                  </div>
-                </div>
-              </button>
-            </a>
-          </p>
-        </div>
         <div class="img mb-5">
           <img class="w-[158px] h-[158px] mx-auto" src="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
         </div>
