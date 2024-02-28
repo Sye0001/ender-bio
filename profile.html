@@ -1,208 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ender | Bio Link</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
     <link href="./output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <title>Profile</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
         body {
             font-family: 'Inter', sans-serif;
+            color: #fff;
         }
-
-        .w {
-            background-image: linear-gradient(to right, #e9e9fe, #1d1164);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .placeholder-slate-50::placeholder {
-            color: rgba(209, 213, 219, 0.3);
-        }
-
-        .initial-opacity {
-            opacity: 0.6;
-            /* Initial opacity */
-        }
-
-
         body {
-            animation: fadeInAnimation ease 3s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+        .header-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
-
-        @keyframes fadeInAnimation {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
+        .header-bg img {
+            opacity: 0.1;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
-
-        .animate-fade-out {
-            animation: fadeOutAnimation ease 1s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes fadeOutAnimation {
-            100% {
-                opacity: 0;
-            }
-
-            0% {
-                opacity: 1;
-            }
-        }
-
     </style>
 </head>
 <body class="bg-neutral-950">
-<main class="flex justify-center items-center h-screen">
-    <div class="glow absolute blur-[44px] z-[-10] bg-opacity-10 bg-jacksons-purple-600 w-full lg:w-full h-screen  rounded-[80%] left-0 right-0 bottom-[80%] "></div>
-    <div class="hero">
-        <div class="img mb-5">
-            <img class="w-[158px] h-[158px] mx-auto" src="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
-        </div>
-        <div class="title items-center text-center font-semibold text-[94px] text-jacksons-purple-100">
-            <h1 class="leading-9">Ender</h1>
-            <h1 class="w">Bio Link</h1>
-        </div>
-        <div class="bottom w-full md:w-[65%] mx-auto ">
-            <div class="text text-jacksons-purple-50 text-opacity-60 text-center">
-                <p>Easily share your Discord profile utilizing Lanyard API, very simple & easy experience!</p>
-            </div>
-            <div class="buttons justify-center flex items-center mx-5">
-                <div id="border" class="border-2 border-jacksons-purple-50 border-opacity-10 bg-transparent h-11 w-full mx-2 md:mx-6 mt-4 rounded-lg flex items-center">
-                    <div class="flex justify-center w-full ">
-                        <input id="discord-input" class="bg-transparent text-white outline-none  w-60 placeholder-slate-50 placeholder-opacity-30" placeholder="Enter your Discord user ID">
-                        <button id="submit-button" class="ml-2 text-white uppercase text-[13px] initial-opacity">Submit</button>
+    <main>
+        <div class="flex justify-center items-center h-screen">
+            <div class="header-bg">
+                <img src="https://i.ibb.co/S7r4ZK8/header-bacwkground.png" alt="BG GLOW">
+            </div>          
+                <div class="profile w-[25rem] mx-4">
+                <div class="top flex items-center">
+                    <div class="img" id="profilePic">
+                        <img class="w-[64px] h-[64px] object-cover rounded-full" src="">
+                    </div>
+                    <div class="user ml-3">
+                        <div class="username text-white text-xl font-semibold leading-tight">
+                            <a id="usernameLink" href="#"></a>
+                        </div>
+                        <div class="tag text-white text-opacity-25">
+                            <a id="tagLink" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Activity-->
+                <div class="spotify status bg-neutral-900 bg-opacity-35 rounded-xl p-3 mt-5 w-full">
+                    <div class="info flex items-center">
+                        <div class="cover order-1">
+                            <img id="imgActivity" src="https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png" width="128" height="128" draggable="false" alt="Activity Image" class="rounded-xl">
+                        </div>                        
+                        <div class="title text-white ml-4 overflow-x-hidden order-2 truncate" style="width: calc(100% - 64px);">
+                            <a id="name" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
+                                
+                            </a>
+                            <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline">
+                            </a>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state"></h2>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="album"></h2>
+                            <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text"></h2>
+                        </div>
+                    </div>
+                    <div id="timestamp" style="display:none;">
+                        <div class="rounded-lg bg-gray-200/20 h-2 mt-4">
+                            <div id="trackbar" class="rounded-lg bg-white/75 h-2 transition-all" style="width: 0%;"></div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span id="currentTime">-</span>
+                            <span id="totalTime">-</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<script>
-    // Set default image source
-    const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png';
 
-    // Function to fetch data and update UI
-    function fetchDataAndUpdateUI(discordId) {
-        fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
-            .then(response => response.json())
-            .then(data => {
-                if (!data.success) {
-                    window.location.href = "https://sye.lol/";
-                    return;
-                }
-                // Extract Discord username, tag, and status
-                const username = data.data.discord_user.display_name;
-                const tag = data.data.discord_user.username;
-
-                // Update Discord information
-                document.getElementById("usernameLink").innerText = username;
-                document.getElementById("tagLink").innerText = tag;
-
-                // Extract avatar hash
-                const avatarHash = data.data.discord_user.avatar;
-
-                // Set profile avatar using the provided hash
-                const avatarUrl = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${avatarHash}.png`;
-                document.getElementById("profilePic").innerHTML = `<img class="w-[64px] h-[64px] object-cover rounded-full" src="${avatarUrl}" alt="Profile Picture">`;
-
-                // Extract Spotify data if available
-                const spotifyData = data.data.spotify;
-                if (spotifyData) {
-                    // Show the timestamp
-                    document.getElementById("timestamp").style.display = "block";
-
-                    // Display Spotify data
-                    document.getElementById("state").innerText = spotifyData.artist;
-                    document.getElementById("details").innerText = spotifyData.song;
-                    document.getElementById("details").style.display = "flex";
-                    document.getElementById("album").style.display = "flex";
-                    document.getElementById("album").innerText = spotifyData.album;
-                    document.getElementById("name").innerText = ""; // Clear the name element
-
-                    // Display album cover image
-                    document.getElementById("imgActivity").src = spotifyData.album_art_url;
-
-                    // Calculate and display timestamps
-                    const currentTime = new Date().getTime();
-                    const startTime = spotifyData.timestamps.start;
-                    const endTime = spotifyData.timestamps.end;
-                    const totalTime = endTime - startTime;
-                    const elapsedTime = currentTime - startTime;
-
-                    document.getElementById("currentTime").innerText = formatTime(elapsedTime);
-                    document.getElementById("totalTime").innerText = formatTime(totalTime);
-
-                    // Update trackbar width
-                    const trackbarWidth = (elapsedTime / totalTime) * 100;
-                    document.getElementById("trackbar").style.width = `${trackbarWidth}%`;
-                } else {
-                    // If not listening to Spotify, display other activity
-                    const otherActivity = data.data.activities.find(activity => activity.type !== 2);
-                    if (otherActivity) {
-                        // Hide the timestamp
-                        document.getElementById("timestamp").style.display = "none";
-                        document.getElementById("details").style.display = "none";
-                        document.getElementById("album").style.display = "none";
-                        document.getElementById("state").innerText = otherActivity.details;
-                        document.getElementById("name").innerText = otherActivity.name;
-
-                        // Check if 'large_text' exists and is not undefined before setting its value
-                        if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
-                            document.getElementById("large_text").innerText = otherActivity.assets.large_text;
-                        }
-
-                        // Display the default image
-                        document.getElementById("imgActivity").src = defaultImageUrl;
-                    } else {
-                        // If no activity is found, display "User is not doing anything"
-                        document.getElementById("state").innerText = "User is not doing anything";
-                        document.getElementById("details").style.display = ""; // Clear the details element
-                        document.getElementById("large_text").innerText = "";
-                        document.getElementById("details").style.display = "none";
-                        document.getElementById("album").style.display = "none";
-                        document.getElementById("name").innerText = ""; // Clear the name element
-                        document.getElementById("imgActivity").src = defaultImageUrl;
-
-                        // Hide the timestamp
-                        document.getElementById("timestamp").style.display = "none";
-                    }
-                }
-
-            })
-            .catch(error => console.error("Error fetching data:", error));
-    }
-
-    // Function to format time in mm:ss format
-    function formatTime(milliseconds) {
-        const totalSeconds = Math.floor(milliseconds / 1000);
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    }
-
-    // Extract Discord ID from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const discordId = urlParams.get('id');
-
-    // Call the function initially
-    fetchDataAndUpdateUI(discordId);
-
-    // Set interval to fetch data and update UI every 2 seconds
-    let intervalId = setInterval(() => fetchDataAndUpdateUI(discordId), 1000);
-</script>
+    
+    <script src="./js/prescence.js"></script>
+    
 </body>
 </html>
