@@ -11,6 +11,7 @@ discordInput.addEventListener('input', () => {
         submitButton.style.opacity = '0.6'; // Set opacity back to 0.6 when text is empty
     }
 });
+
 submitButton.addEventListener('click', async function() {
     const discordId = discordInput.value.trim();
     
@@ -18,9 +19,9 @@ submitButton.addEventListener('click', async function() {
         const servercheck = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
         const requestdata = await servercheck.json()
 
-        if (requestdata.success == false) {
-            document.getElementById("notification").style.display = "flex"
-            return
+        if (requestdata.success === false) {
+            window.location.href = 'error.html'; // Redirect to error page
+            return;
         }
 
         window.location.href = `profile.html?id=${discordId}`;
