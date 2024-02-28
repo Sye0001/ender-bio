@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/4d1y4gV/image-2024-02-27-172652050-removebg-preview.png">
+    <link href="./output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <title>Profile</title>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #fff;
+      }
+
+      .header-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .header-bg img {
+        opacity: 0.1;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+
+      html,
+      body {
+        -webkit-user-select: none;
+        /* Safari */
+        -ms-user-select: none;
+        /* IE 10 and IE 11 */
+        user-select: none;
+        /* Standard syntax */
+        overflow-x: hidden;
+      }
+
+      body {
+        position: relative;
+      }
+
+      :root {
+        --background-rgb: 53, 31, 152;
+        --background-light-rgb: 353, 31, 152;
+        --border-rgb: 255 255 255;
+        --border: 1px solid rgb(var(--border-rgb) / 20%);
+        --hyperplexed-main-rgb: 53, 31, 152;
+        --hyperplexed-main-light-rgb: 53, 31, 152;
+        --hyperplexed-secondary-rgb: 53, 31, 152;
+        --card-size: 480px;
+        --font-size: 0.8rem;
+        --logo-size: calc(var(--card-size) * 0.3);
+      }
+
+      body {
+        background: rgb(var(--background-rgb));
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .card-track {
+        height: 100%;
+        width: var(--card-size);
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .card-wrapper {
+        width: 100%;
+        position: relative;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        position: relative;
+        margin: 1rem;
+        border-radius: 2rem;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .card-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 4;
+      }
+
+      .card-gradient {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        mix-blend-mode: hue;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .card-letters {
+        --x: 0px;
+        --y: 0px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        color: #4b35c9da;
+        font-size: var(--font-size);
+        font-weight: 500;
+        word-wrap: break-word;
+        opacity: 0;
+        transition: opacity 400ms;
+        -webkit-mask-image: radial-gradient(calc(var(--card-size) * 0.8) circle at var(--x) var(--y),
+            rgb(255 255 255) 20%,
+            rgb(255 255 255 / 25%),
+            transparent);
+        scale: 1.03;
+      }
+
+      .card:hover .card-letters {
+        opacity: 1;
+      }
+
+      @media(max-width: 600px) {
+        :root {
+          --card-size: 340px;
+        }
+
+        .card {
+          border-radius: 1rem;
+        }
+      }
+
+      .right-side {
+        flex: 1;
+        /* This will make the right-side div take up remaining space */
+        display: flex;
+        /* Use flex to control its children */
+        width: 100%;
+      }
+
+      .right-content {
+        flex: 1;
+        /* This will make the content fill all available space */
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        margin: 2rem;
+      }
+
+      /* Track */
+      .profile::-webkit-scrollbar-track {
+        background: #f1f1f100;
+      }
+
+      ::selection {
+        color: #573ceb;
+      }
+
+      /* Handle */
+      .profile::-webkit-scrollbar-thumb {
+        background: #181818b9;
+        border-radius: 4vh;
+      }
+
+      /* Handle on hover */
+      .profile::-webkit-scrollbar-thumb:hover {
+        background: #242424;
+      }
+
+      .profile::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body class="bg-neutral-950">
+    <main>
+      <div class="flex justify-center items-center h-screen">
+        <div class="header-bg">
+          <img src="https://i.ibb.co/S7r4ZK8/header-bacwkground.png" alt="BG GLOW">
+        </div>
+        <div class="profile w-[40%] md:w-[30.2rem] flex overflow-x-scroll overflow-y-hidden mx-4 border-2 border-opacity-10 rounded-xl border-jacksons-purple-300">
+          <div class="left top items-center">
+            <div class="card-track">
+              <div class="card-wrapper">
+                <div class="card">
+                  <div class="card-image">
+                    <img class="w-[185px] h-[185px] object-cover rounded-full border-4 border-green-500" src="https://cdn.discordapp.com/avatars/208168562286788610/f7ad17deefae368d6e0149be18796a91.webp?size=4096">
+                  </div>
+                  <div class="card-gradient"></div>
+                  <div class="card-letters"></div>
+                </div>
+                <div class="profile-info mx-5">
+                  <div class="usernames text-white">
+                    <h1 class="font-semibold text-[38px]">Sye</h1>
+                    <a class="text-opacity-85 text-white text-[24px] font-normal leading-4">.sye</a>
+                  </div>
+                  <div class="status mt-5 flex-wrap text-white text-opacity-80 font-normal">
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, quia nostrum iusto!</a>
+                  </div>
+                  <div class="connections font-normal text-white text-opacity-80 mt-5 mb-5">
+                    <a class="bg-neutral-950 bg-opacity-15 border-2 border-white border-opacity-20 rounded-2xl px-2 py-1" href="/" target="_blank">github</a>
+                    <a class="bg-neutral-950 bg-opacity-15 border-2 border-white border-opacity-20 rounded-2xl px-2 py-1" href="/" target="_blank">twitter</a>
+                    <a class="bg-neutral-950 bg-opacity-15 border-2 border-white border-opacity-20 rounded-2xl px-2 py-1" href="/" target="_blank">instagram</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="right-content m-5 w-full mx-2 md:w-[30rem] ">
+              <div class="spotify status bg-neutral-950 bg-opacity-35 rounded-xl p-3 w-full">
+                <div class="info flex items-center">
+                  <div class="cover order-1">
+                    <img id="songCover" src="https://i.scdn.co/image/ab67616d0000b273435a144c92f9e9d2f3f5ad32" width="128" height="128" draggable="false" alt="Activity Image" class="rounded-xl">
+                  </div>
+                  <div class="title text-white ml-4 overflow-x-hidden order-2 truncate" style="width: calc(100% - 64px);">
+                    <a id="name" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline"></a>
+                    <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline"> PitayA </a>
+                    <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state">8R08</h2>
+                    <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text">Cornball</h2>
+                  </div>
+                </div>
+                <div id="timestamp">
+                  <div class="rounded-lg bg-gray-200/20 h-2 mt-4">
+                    <div id="trackbar" class="rounded-lg bg-white/75 h-2 transition-all" style="width: 45%;"></div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span id="currentTime">1:08</span>
+                    <span id="totalTime">2:24</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ativity status bg-neutral-950 bg-opacity-35 rounded-xl p-3 mt-5 w-full">
+                <div class="info flex items-center">
+                  <div class="cover order-1">
+                    <img id="songCover" src="https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/tailwind.png" width="128" height="128" draggable="false" alt="Activity Image" class="rounded-xl">
+                  </div>
+                  <div class="title text-white ml-4 overflow-x-hidden order-2 truncate" style="width: calc(100% - 64px);">
+                    <a id="name" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline"></a>
+                    <a id="details" href="#" target="_blank" rel="noreferrer" title="Open on Spotify" class="cursor-pointer font-semibold text-lg leading-tight hover:underline"> Code </a>
+                    <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="state">In status visualizer - Copy - 15 problems found</h2>
+                    <h2 class="leading-tight opacity-90 line-clamp-2 text-white text-opacity-80" id="large_text">Viewing tailwind.config.js </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <script>
+      const profile = document.querySelector(".profile");
+      let startX = 0;
+      profile.addEventListener("mousedown", e => {
+        startX = e.clientX;
+      });
+      profile.addEventListener("mouseup", e => {
+        const endX = e.clientX;
+        const diffX = endX - startX;
+        if (diffX > 50) {
+          // Swipe right, scroll to the very start with animation
+          smoothScrollTo(profile, 0, 500);
+        } else if (diffX < -50) {
+          // Swipe left, scroll to the end with animation
+          smoothScrollTo(profile, profile.scrollWidth - profile.clientWidth, 500);
+        }
+      });
+
+      function smoothScrollTo(element, to, duration) {
+        const start = element.scrollLeft;
+        const change = to - start;
+        const startTime = performance.now();
+
+        function animateScroll(time) {
+          const elapsedTime = time - startTime;
+          element.scrollLeft = easeInOut(elapsedTime, start, change, duration);
+          if (elapsedTime < duration) {
+            requestAnimationFrame(animateScroll);
+          }
+        }
+
+        function easeInOut(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+        requestAnimationFrame(animateScroll);
+      }
+    </script>
+    <script>
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const randomChar = () => chars[Math.floor(Math.random() * (chars.length - 1))],
+        randomString = length => Array.from(Array(length)).map(randomChar).join("");
+      const card = document.querySelector(".card"),
+        letters = card.querySelector(".card-letters");
+      const handleOnMove = e => {
+        const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+        letters.style.setProperty("--x", `${x}px`);
+        letters.style.setProperty("--y", `${y}px`);
+        letters.innerText = randomString(1500);
+      }
+      card.onmousemove = e => handleOnMove(e);
+      card.ontouchmove = e => handleOnMove(e.touches[0]);
+    </script>
+  </body>
+</html>
