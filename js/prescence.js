@@ -3,7 +3,7 @@ const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-rem
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(discordId) {
-    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+    fetch(`https://api.lanyard.rest/v1/users/208168562286788610`)
         .then(response => response.json())
         .then(data => {
             if (!data.success) {
@@ -36,6 +36,7 @@ function fetchDataAndUpdateUI(discordId) {
                 document.getElementById("details").innerText = spotifyData.song;
                 document.getElementById("details").style.display = "flex";
                 document.getElementById("album").style.display = "flex";
+                document.getElementById("large_text").style.display = "none";
                 document.getElementById("album").innerText = spotifyData.album;
                 document.getElementById("name").innerText = ""; // Clear the name element
             
@@ -62,6 +63,7 @@ function fetchDataAndUpdateUI(discordId) {
                     // Hide the timestamp
                     document.getElementById("timestamp").style.display = "none";
                     document.getElementById("details").style.display = "none";
+                    document.getElementById("large_text").style.display = "flex";
                     document.getElementById("album").style.display = "none";
                     document.getElementById("state").innerText = otherActivity.details;
                     document.getElementById("name").innerText = otherActivity.name;
