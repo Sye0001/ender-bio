@@ -11,7 +11,6 @@ discordInput.addEventListener('input', () => {
         submitButton.style.opacity = '0.6'; // Set opacity back to 0.6 when text is empty
     }
 });
-
 submitButton.addEventListener('click', async function() {
     const discordId = discordInput.value.trim();
     
@@ -24,6 +23,6 @@ submitButton.addEventListener('click', async function() {
             return
         }
 
-        window.location.href = `/${discordId}`; // Redirect to the desired URL
+        window.location.href = `profile.html?id=${discordId}`;
     }
 });
