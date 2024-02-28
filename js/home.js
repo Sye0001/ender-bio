@@ -1,18 +1,9 @@
-const border = document.getElementById('border');
-const submitButton = document.getElementById('submit-button');
-const discordInput = document.getElementById('discord-input');
-const body = document.querySelector('body');
+// Get DOM elements
+const submitButton = document.getElementById('submitButton');
+const discordInput = document.getElementById('discordInput');
+const body = document.body;
 
-discordInput.addEventListener('input', () => {
-    if (discordInput.value.trim() !== '') {
-        border.style.borderColor = 'rgba(209, 213, 219, 0.4)';
-        submitButton.style.opacity = '1'; // Set opacity to 1 when text is input
-    } else {
-        border.style.borderColor = 'rgba(209, 213, 219, 0.1)';
-        submitButton.style.opacity = '0.6'; // Set opacity back to 0.6 when text is empty
-    }
-});
-
+// Add event listener to submit button
 submitButton.addEventListener('click', async function() {
     const discordId = discordInput.value.trim();
     
@@ -33,6 +24,7 @@ submitButton.addEventListener('click', async function() {
 
         // Extract Discord username from API response
         const username = requestdata.data.discord_user.display_name;
+        console.log("Username:", username); // Log extracted username
         const usernameForLink = encodeURIComponent(username.replace(/\s+/g, '')); // Encode username for URL
 
         // Construct redirection link with username
@@ -47,9 +39,3 @@ submitButton.addEventListener('click', async function() {
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
-
-// Extract Discord username from API response
-const username = requestdata.data.discord_user.display_name;
-console.log("Username:", username); // Add this line to check the extracted username
-const usernameForLink = encodeURIComponent(username.replace(/\s+/g, '')); // Encode username for URL
-
