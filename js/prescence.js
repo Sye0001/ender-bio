@@ -3,7 +3,7 @@ const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-rem
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(discordId) {
-    fetch(`https://api.lanyard.rest/v1/users/208168562286788610`)
+    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
         .then(response => response.json())
         .then(data => {
             if (!data.success) {
