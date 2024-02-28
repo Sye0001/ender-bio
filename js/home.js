@@ -27,3 +27,4 @@ function handleSubmission() {
 
 // Add event listener to the submit button
 document.getElementById("submit-button").addEventListener("click", handleSubmission);
+
