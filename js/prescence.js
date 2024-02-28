@@ -69,13 +69,25 @@ function fetchDataAndUpdateUI(discordId) {
 					document.getElementById("state").innerText = otherActivity.details;
 					document.getElementById("name").innerText = otherActivity.name;
 
+					// Check if 'large_image' exists and is not undefined before setting its value
+					if (otherActivity.assets && otherActivity.assets.large_image !== undefined) {
+						const largeImageId = otherActivity.assets.large_image;
+						const largeImageUrl = `https://cdn.discordapp.com/app-assets/432980957394370572/${largeImageId}.png`;
+						// Set the source of the image
+						document.getElementById("imgActivity").src = largeImageUrl;
+						// Add an error handler to replace the image with the default image if it fails to load
+						document.getElementById("imgActivity").onerror = function() {
+							document.getElementById("imgActivity").src = defaultImageUrl;
+						};
+					} else {
+						// Display the default image if no large image asset is provided
+						document.getElementById("imgActivity").src = defaultImageUrl;
+					}
+
 					// Check if 'large_text' exists and is not undefined before setting its value
 					if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
 						document.getElementById("large_text").innerText = otherActivity.assets.large_text;
 					}
-
-					// Display the default image
-					document.getElementById("imgActivity").src = defaultImageUrl;
 				} else {
 					// If no activity is found or if all activities are "Custom Status", display "User is not doing anything"
 					document.getElementById("state").innerText = "User is not doing anything";
@@ -89,6 +101,7 @@ function fetchDataAndUpdateUI(discordId) {
 					// Hide the timestamp
 					document.getElementById("timestamp").style.display = "none";
 				}
+
 
 			}
 
