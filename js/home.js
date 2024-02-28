@@ -14,17 +14,32 @@ discordInput.addEventListener('input', () => {
 });
 
 // Function to handle submission of Discord ID
-function handleSubmission() {
+async function handleSubmission() {
     // Get the Discord ID from the input field
     const discordId = document.getElementById("discord-input").value.trim();
-    
+
     // Check if the Discord ID is not empty
     if (discordId) {
-        // Redirect to the specified URL with the Discord ID
-        window.location.href = `https://sye.lol/${discordId}`;
+        try {
+            // Fetch the content of profile.html
+            const response = await fetch('profile.html');
+            if (!response.ok) {
+                throw new Error('Failed to fetch profile.html');
+            }
+            const htmlContent = await response.text();
+
+            // Replace the current HTML content with the fetched content
+            document.open();
+            document.write(htmlContent);
+            document.close();
+        } catch (error) {
+            console.error('Error fetching profile.html:', error);
+            // Handle error appropriately, e.g., display a message to the user
+        }
     }
 }
 
 // Add event listener to the submit button
 document.getElementById("submit-button").addEventListener("click", handleSubmission);
+
 
