@@ -1,6 +1,7 @@
 const border = document.getElementById('border');
 const submitButton = document.getElementById('submit-button');
 const discordInput = document.getElementById('discord-input');
+const body = document.querySelector('body');
 
 discordInput.addEventListener('input', () => {
     if (discordInput.value.trim() !== '') {
@@ -20,10 +21,22 @@ submitButton.addEventListener('click', async function() {
         const requestdata = await servercheck.json()
 
         if (requestdata.success === false) {
-            window.location.href = 'error.html'; // Redirect to error page
+            // Add the animation class to the body
+            body.classList.add('animate-fade-out');
+
+            // Delay the redirect to allow time for the animation
+            setTimeout(() => {
+                window.location.href = 'error.html'; // Redirect to error page
+            }, 1000); // Adjust the delay time to match the animation duration
             return;
         }
 
-        window.location.href = `profile.html?id=${discordId}`;
+        // Add the animation class to the body
+        body.classList.add('animate-fade-out');
+
+        // Delay the redirect to allow time for the animation
+        setTimeout(() => {
+            window.location.href = `profile.html?id=${discordId}`;
+        }, 1000); // Adjust the delay time to match the animation duration
     }
 });
