@@ -31,12 +31,13 @@ submitButton.addEventListener('click', async function() {
             return;
         }
 
+        const username = requestdata.data.discord_user.username; // Extract the username
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = `profile.html?id=${discordId}`;
+            window.location.href = `profile.html?username=${username}`; // Use the username in the URL
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
