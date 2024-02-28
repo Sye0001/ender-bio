@@ -13,33 +13,36 @@ discordInput.addEventListener('input', () => {
     }
 });
 
-// Function to handle submission of Discord ID
-async function handleSubmission() {
-    // Get the Discord ID from the input field
-    const discordId = document.getElementById("discord-input").value.trim();
+  // Function to handle submission of Discord ID
+        async function handleSubmission() {
+            // Get the Discord ID from the input field
+            const discordId = document.getElementById("discord-input").value.trim();
 
-    // Check if the Discord ID is not empty
-    if (discordId) {
-        try {
-            // Fetch the content of profile.html
-            const response = await fetch('profile.html');
-            if (!response.ok) {
-                throw new Error('Failed to fetch profile.html');
+            // Check if the Discord ID is not empty
+            if (discordId) {
+                try {
+                    // Fetch the content of profile.html
+                    const response = await fetch('profile.html');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch profile.html');
+                    }
+                    const htmlContent = await response.text();
+
+                    // Replace the current HTML content with the fetched content
+                    document.open();
+                    document.write(htmlContent);
+                    document.close();
+
+                    // Load the presence.js script and pass the discordId as a query parameter
+                    const script = document.createElement('script');
+                    script.src = `precesne.js?id=${discordId}`;
+                    document.body.appendChild(script);
+                } catch (error) {
+                    console.error('Error fetching profile.html:', error);
+                    // Handle error appropriately, e.g., display a message to the user
+                }
             }
-            const htmlContent = await response.text();
-
-            // Replace the current HTML content with the fetched content
-            document.open();
-            document.write(htmlContent);
-            document.close();
-        } catch (error) {
-            console.error('Error fetching profile.html:', error);
-            // Handle error appropriately, e.g., display a message to the user
         }
-    }
-}
 
-// Add event listener to the submit button
-document.getElementById("submit-button").addEventListener("click", handleSubmission);
-
-
+        // Add event listener to the submit button
+        document.getElementById("submit-button").addEventListener("click", handleSubmission);
