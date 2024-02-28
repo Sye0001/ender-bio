@@ -13,9 +13,7 @@ discordInput.addEventListener('input', () => {
     }
 });
 
-submitButton.addEventListener('click', async function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
+submitButton.addEventListener('click', async function() {
     const discordId = discordInput.value.trim();
     
     if (discordId !== '') {
@@ -38,7 +36,7 @@ submitButton.addEventListener('click', async function(event) {
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = discordId; // Redirect to profile page
+            window.location.href = `profile.html?id=${discordId}`;
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
