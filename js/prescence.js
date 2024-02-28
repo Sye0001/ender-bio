@@ -102,7 +102,7 @@ function formatTime(milliseconds) {
 
 // Extract Discord ID from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
-const discordId = urlParams.get('id');
+const discordId = urlParams.get(':id');
 
 // Call the function initially
 fetchDataAndUpdateUI(discordId);
