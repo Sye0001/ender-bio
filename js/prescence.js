@@ -17,14 +17,11 @@ function fetchDataAndUpdateUI(discordId) {
 			// Update Discord information
 			document.getElementById("usernameLink").innerText = username;
 			document.getElementById("tagLink").innerText = tag;
-
 			// Extract avatar hash
 			const avatarHash = data.data.discord_user.avatar;
-
 			// Set profile avatar using the provided hash
 			const avatarUrl = `https://cdn.discordapp.com/avatars/${data.data.discord_user.id}/${avatarHash}.png`;
 			document.getElementById("profilePic").innerHTML = `<img class="w-[64px] h-[64px] object-cover rounded-full" src="${avatarUrl}" alt="Profile Picture">`;
-
 			// Extract Spotify data if available
 			const spotifyData = data.data.spotify;
 			if (spotifyData) {
@@ -63,25 +60,24 @@ function fetchDataAndUpdateUI(discordId) {
 					// Hide the timestamp
 					document.getElementById("timestamp").style.display = "none";
 					document.getElementById("details").style.display = "none";
-					if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
-						document.getElementById("large_text").innerText = otherActivity.assets.large_text;
-						document.getElementById("large_text").style.display = "flex";
-					} else {
+					if (document.getElementById("large_text").innerText.trim() === "Idling") {
 						document.getElementById("large_text").style.display = "none";
+					} else {
+						document.getElementById("large_text").style.display = "flex";
 					}
 					document.getElementById("album").style.display = "none";
-
-					// Display state only if it's defined
-					if (otherActivity.state !== undefined) {
-						document.getElementById("state").innerText = otherActivity.state;
-					}
-
+					document.getElementById("state").innerText = otherActivity.details;
 					document.getElementById("name").innerText = otherActivity.name;
+
+					// Check if 'large_text' exists and is not undefined before setting its value
+					if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
+						document.getElementById("large_text").innerText = otherActivity.assets.large_text;
+					}
 
 					// Display the default image
 					document.getElementById("imgActivity").src = defaultImageUrl;
 				} else {
-					// If no activity is found, display "User is not doing anything"
+					// If no activity is found or if all activities are "Custom Status", display "User is not doing anything"
 					document.getElementById("state").innerText = "User is not doing anything";
 					document.getElementById("details").style.display = ""; // Clear the details element
 					document.getElementById("large_text").innerText = "";
@@ -93,12 +89,12 @@ function fetchDataAndUpdateUI(discordId) {
 					// Hide the timestamp
 					document.getElementById("timestamp").style.display = "none";
 				}
+
 			}
 
 		})
 		.catch(error => console.error("Error fetching data:", error));
 }
-
 // Function to format time in mm:ss format
 function formatTime(milliseconds) {
 	const totalSeconds = Math.floor(milliseconds / 1000);
@@ -106,13 +102,10 @@ function formatTime(milliseconds) {
 	const seconds = totalSeconds % 60;
 	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
-
 // Extract Discord ID from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 const discordId = urlParams.get('id');
-
 // Call the function initially
 fetchDataAndUpdateUI(discordId);
-
 // Set interval to fetch data and update UI every 2 seconds
 let intervalId = setInterval(() => fetchDataAndUpdateUI(discordId), 1000);
