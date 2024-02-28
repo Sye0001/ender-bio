@@ -70,8 +70,12 @@ function fetchDataAndUpdateUI(discordId) {
 						document.getElementById("large_text").style.display = "none";
 					}
 					document.getElementById("album").style.display = "none";
-					document.getElementById("state").innerText = otherActivity.details;
-					document.getElementById("state").innerText = otherActivity.state;
+
+					// Display state only if it's defined
+					if (otherActivity.state !== undefined) {
+						document.getElementById("state").innerText = otherActivity.state;
+					}
+
 					document.getElementById("name").innerText = otherActivity.name;
 
 					// Display the default image
