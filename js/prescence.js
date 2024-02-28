@@ -3,7 +3,7 @@ const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-rem
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(discordId) {
-    fetch(`https://api.lanyard.rest/v1/users/${discordId}`)
+    fetch(`https://api.lanyard.rest/v1/users/208168562286788610`)
         .then(response => response.json())
         .then(data => {
             if (data.success == false) {
@@ -70,17 +70,14 @@ function fetchDataAndUpdateUI(discordId) {
                     // Display the default image
                     document.getElementById("imgActivity").src = defaultImageUrl;
                 
-                } else {
-                    // If no activity is found, display "User is not doing anything"
-                    document.getElementById("state").innerText = "User is not doing anything";
-                    document.getElementById("details").innerText = "";
-                    document.getElementById("large_text").innerText = "";
-                    document.getElementById("imgActivity").src = defaultImageUrl;
-
-                    // Hide the timestamp
-                    document.getElementById("timestamp").style.display = "none";
+                    // Check if 'name' is "Custom Status" and skip displaying if true
+                    if (otherActivity.name === "Custom Status") {
+                        // Hide or clear the element associated with the name "Custom Status"
+                        // For example:
+                        document.getElementById("name").innerText = ""; // Or set it to an empty string
+                    }
                 }
-            }
+                
         })
         .catch(error => console.error("Error fetching data:", error));
 }
