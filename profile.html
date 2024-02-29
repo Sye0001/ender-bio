@@ -101,7 +101,7 @@
 
     
     <script>
-     // Set default image source
+  // Set default image source
 const defaultImageUrl = 'https://i.ibb.co/g7P1k79/image-2024-02-27-172652050-removebg-preview.png';
 
 // Function to fetch data and update UI
@@ -222,9 +222,13 @@ function formatTime(milliseconds) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// Extract Discord ID from URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const discordId = urlParams.get('id');
+    window.location.href = `https://sye.lol/${discordId}`;
+        })
+        .catch(error => console.error("Error fetching data:", error));
+}
+
+// Extract Discord ID from the URL pathname
+const discordId = window.location.pathname.substring(1);
 
 // Call the function initially
 fetchDataAndUpdateUI(discordId);
