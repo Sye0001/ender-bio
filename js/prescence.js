@@ -54,53 +54,55 @@ function fetchDataAndUpdateUI(discordId) {
 				const trackbarWidth = (elapsedTime / totalTime) * 100;
 				document.getElementById("trackbar").style.width = `${trackbarWidth}%`;
 			} else {
-				// If not listening to Spotify, display other activity
-				const otherActivity = data.data.activities.find(activity => activity.type !== 2 && activity.name !== "Custom Status");
-				if (otherActivity) {
-					// Hide the timestamp
-					document.getElementById("timestamp").style.display = "none";
-					document.getElementById("details").style.display = "none";
-					if (document.getElementById("large_text").innerText.trim() === "Idling") {
-						document.getElementById("large_text").style.display = "none";
-					} else {
-						document.getElementById("large_text").style.display = "flex";
-					}
-					document.getElementById("album").style.display = "none";
-					document.getElementById("state").innerText = otherActivity.details;
-					document.getElementById("name").innerText = otherActivity.name;
+// If not listening to Spotify, display other activity
+const otherActivity = data.data.activities.find(activity => activity.type !== 2 && activity.name !== "Custom Status");
+if (otherActivity) {
+    // Hide the timestamp
+    document.getElementById("timestamp").style.display = "none";
+    document.getElementById("details").style.display = "none";
+    if (document.getElementById("large_text").innerText.trim() === "Idling") {
+        document.getElementById("large_text").style.display = "none";
+    } else {
+        document.getElementById("large_text").style.display = "flex";
+    }                    
+    document.getElementById("album").style.display = "none";
+    document.getElementById("state").innerText = otherActivity.details;
+    document.getElementById("name").innerText = otherActivity.name;
+    
+    // Check if 'large_image' exists and is not undefined before setting its value
+    if (otherActivity.assets && otherActivity.assets.large_image !== undefined) {
+        const applicationId = otherActivity.application_id;
+        const largeImageId = otherActivity.assets.large_image;
+        const largeImageUrl = `https://cdn.discordapp.com/app-assets/${applicationId}/${largeImageId}.png`;
+        // Set the source of the image
+        document.getElementById("imgActivity").src = largeImageUrl;
+        // Add an error handler to replace the image with the default image if it fails to load
+        document.getElementById("imgActivity").onerror = function() {
+            document.getElementById("imgActivity").src = defaultImageUrl;
+        };
+    } else {
+        // Display the default image if no large image asset is provided
+        document.getElementById("imgActivity").src = defaultImageUrl;
+    }
 
-					// Check if 'large_image' exists and is not undefined before setting its value
-					if (otherActivity.assets && otherActivity.assets.large_image !== undefined) {
-						const largeImageId = otherActivity.assets.large_image;
-						const largeImageUrl = `https://cdn.discordapp.com/app-assets/432980957394370572/${largeImageId}.png`;
-						// Set the source of the image
-						document.getElementById("imgActivity").src = largeImageUrl;
-						// Add an error handler to replace the image with the default image if it fails to load
-						document.getElementById("imgActivity").onerror = function() {
-							document.getElementById("imgActivity").src = defaultImageUrl;
-						};
-					} else {
-						// Display the default image if no large image asset is provided
-						document.getElementById("imgActivity").src = defaultImageUrl;
-					}
+    // Check if 'large_text' exists and is not undefined before setting its value
+    if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
+        document.getElementById("large_text").innerText = otherActivity.assets.large_text;
+    }
+} else {
+    // If no activity is found or if all activities are "Custom Status", display "User is not doing anything"
+    document.getElementById("state").innerText = "User is not doing anything";
+    document.getElementById("details").style.display = ""; // Clear the details element
+    document.getElementById("large_text").innerText = "";
+    document.getElementById("details").style.display = "none";
+    document.getElementById("album").style.display = "none";
+    document.getElementById("name").innerText = ""; // Clear the name element
+    document.getElementById("imgActivity").src = defaultImageUrl;
 
-					// Check if 'large_text' exists and is not undefined before setting its value
-					if (otherActivity.assets && otherActivity.assets.large_text !== undefined) {
-						document.getElementById("large_text").innerText = otherActivity.assets.large_text;
-					}
-				} else {
-					// If no activity is found or if all activities are "Custom Status", display "User is not doing anything"
-					document.getElementById("state").innerText = "User is not doing anything";
-					document.getElementById("details").style.display = ""; // Clear the details element
-					document.getElementById("large_text").innerText = "";
-					document.getElementById("details").style.display = "none";
-					document.getElementById("album").style.display = "none";
-					document.getElementById("name").innerText = ""; // Clear the name element
-					document.getElementById("imgActivity").src = defaultImageUrl;
+    // Hide the timestamp
+    document.getElementById("timestamp").style.display = "none";
+}
 
-					// Hide the timestamp
-					document.getElementById("timestamp").style.display = "none";
-				}
 
 
 			}
