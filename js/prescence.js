@@ -124,3 +124,8 @@ const discordId = urlParams.get('id');
 fetchDataAndUpdateUI(discordId);
 // Set interval to fetch data and update UI every 2 seconds
 let intervalId = setInterval(() => fetchDataAndUpdateUI(discordId), 1000);
+
+const url = "https://sye.lol/profile.html?id=208168562286788610";
+const modifiedUrl = url.replace("profile.html?id=", "profile.html#");
+
+console.log(modifiedUrl);
