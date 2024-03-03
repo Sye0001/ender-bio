@@ -34,13 +34,9 @@ submitButton.addEventListener('click', async function() {
         // Add the animation class to the body
         body.classList.add('animate-fade-out');
 
-        // Construct the new URL format
-        const newUrl = `https://sye.lol/${discordId}`;
-
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            window.location.href = newUrl;
+            window.location.href = `profile.html?id=${discordId}`;
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
-
