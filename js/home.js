@@ -36,10 +36,7 @@ submitButton.addEventListener('click', async function() {
 
         // Delay the redirect to allow time for the animation
         setTimeout(() => {
-            // Manipulate the browser history to remove the id parameter from the URL
-            history.pushState({}, '', 'profile.html');
-            // Trigger the profile page update function
-            fetchDataAndUpdateUI(discordId);
+            window.location.href = `profile.html?id=${discordId}`;
         }, 1000); // Adjust the delay time to match the animation duration
     }
 });
