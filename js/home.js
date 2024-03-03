@@ -21,21 +21,22 @@ submitButton.addEventListener('click', async function() {
         const requestdata = await servercheck.json()
 
         if (requestdata.success === false) {
-            
             body.classList.add('animate-fade-out');
 
-            
             setTimeout(() => {
-                window.location.href = 'error.html'; e
+                window.location.href = 'error.html';
             }, 1000); 
             return;
         }
 
-        
+        // Removing query parameters from URL
+        const urlWithoutParams = window.location.href.split('?')[0];
+
         body.classList.add('animate-fade-out');
 
-        
         setTimeout(() => {
+            // Redirecting without query parameters
+            window.history.replaceState({}, document.title, urlWithoutParams);
             window.location.href = `profile.html?id=${discordId}`;
         }, 1000); 
     }
