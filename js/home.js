@@ -24,17 +24,17 @@ submitButton.addEventListener('click', async function() {
             
             body.classList.add('animate-fade-out');
 
-           
+            
             setTimeout(() => {
-                window.location.href = 'error.html'; 
-            }, 1000); /
+                window.location.href = 'error.html'; e
+            }, 1000); 
             return;
         }
 
-        // Add the animation class to the body
+        
         body.classList.add('animate-fade-out');
 
-
+        
         setTimeout(() => {
             window.location.href = `profile.html?id=${discordId}`;
         }, 1000); 
