@@ -13,20 +13,19 @@
             color: #fff;
         }
         body {
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
 
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
 
         .header-bg {
             position: fixed;
@@ -51,7 +50,7 @@
             <div class="header-bg">
                 <img src="https://i.ibb.co/S7r4ZK8/header-bacwkground.png" alt="BG GLOW">
             </div>          
-                <div class="profile w-[25rem] mx-4">
+            <div class="profile w-[25rem] mx-4">
                 <div class="top flex items-center">
                     <div class="img" id="profilePic">
                         <img class="w-[64px] h-[64px] object-cover rounded-full" src="">
@@ -98,9 +97,19 @@
         </div>
     </main>
 
-
-    
-    <script src="./js/prescence.js"></script>
-    
+    <script>
+        // Fetch the content from profile.html and load it into the main section
+        fetch('profile.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const profileContent = parser.parseFromString(html, 'text/html');
+                const mainSection = document.querySelector('main');
+                mainSection.innerHTML = profileContent.querySelector('body').innerHTML;
+            })
+            .catch(error => {
+                console.error('Error loading profile content:', error);
+            });
+    </script>
 </body>
 </html>
